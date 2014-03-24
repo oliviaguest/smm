@@ -1103,7 +1103,7 @@ void init_network(void)
 //     init_iterations();
     abort_training = 1;
     init_train_flags();
-
+    
 }
 
 
@@ -1915,6 +1915,8 @@ void set_pattern_file(GtkComboBox *combo_box, GtkNotebook *notebook)
 
             open_patterns("category_names.pat");
             save_patterns_matlab("category_names.m");
+	    save_patterns_pdptool("category_names_pdptool.pat");
+	    
 
         }
     }

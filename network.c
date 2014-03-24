@@ -188,7 +188,9 @@ void network_file_save(int network_type, char *filename)
 void network_open_file(int network_type, char *filename)
 {
     if (network_type == BPTT) {
-        bptt_open_file(filename);
+        if (bptt_open_file(filename) == 0) {
+	  pdptool_load_weights_trained_on_smm_patterns(filename);
+	}
         return;
     }
     else if (network_type == BM) {
@@ -1136,8 +1138,10 @@ int network_file_open(int network_type, char* filename) {
 
     if (network_type == BPTT) {
 
-        return bptt_open_file(filename);
-
+      if (bptt_open_file(filename) == 0) {
+	pdptool_load_weights_trained_on_smm_patterns(filename);
+      }
+      return;
 
 
     }
