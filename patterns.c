@@ -1997,93 +1997,93 @@ void tyler_save_noisy_patterns(char *filename)
 
 save_patterns_pdptool(char *filename)
 {
-  //to make patterns readable by PDPTOOL
-  #if PRINT_FUNCTION
-  printf("%s\n", __FUNCTION__);
-  #endif
-  int p, i;
-  FILE *fp;
-  fp = fopen(filename, "wt");  
-  int N_NAME = BPTT_N_NAME; //all the same
-  int N_VISUAL =  BPTT_N_VISUAL;
-  int N_VERBAL =   BPTT_N_VERBAL;
-  printf("name: %d\n", N_NAME);
-  printf("visual: %d\n", N_VISUAL);
-  printf("verbal: %d\n", N_VERBAL);
-  
-  
-  fprintf(fp, "rbp : 7 4\n\n"); //what it needs to say at the top
-  for (p = 0; p < P; p++) {
-    fprintf(fp, "%s\n", get_name_string(p));
-    fprintf(fp, "H 1 3 name ");
-    for (i = 0; i < N_NAME; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 name ");
-    for (i = 0; i < N_NAME; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 verbal_descriptors ");
-    for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 visual_features ");
-    for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\nend\n\n");
-  }
-  for (p = 0; p < P; p++) {
-    fprintf(fp, "%s\n", get_name_string(p));
-    fprintf(fp, "H 1 3 verbal_descriptors ");
-    for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 name ");
-    for (i = 0; i < N_NAME; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 verbal_descriptors ");
-    for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 visual_features ");
-    for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\nend\n\n");
-    
-  }
-  for (p = 0; p < P; p++) {
-    fprintf(fp, "%s\n", get_name_string(p));
-    fprintf(fp, "H 1 3 visual_features ");
-    for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 name ");
-    for (i = 0; i < N_NAME; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 verbal_descriptors ");
-    for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\n");
-    fprintf(fp, "T 6 2 visual_features ");
-    for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
-      fprintf(fp, "%d ", get_pattern_int(p, i));
-    }
-    fprintf(fp, "\nend\n\n");
-    
-  }
+    //to make patterns readable by PDPTOOL
+#if PRINT_FUNCTION
+    printf("%s\n", __FUNCTION__);
+#endif
+    int p, i;
+    FILE *fp;
+    fp = fopen(filename, "wt");
+    int N_NAME = BPTT_N_NAME; //all the same
+    int N_VISUAL =  BPTT_N_VISUAL;
+    int N_VERBAL =   BPTT_N_VERBAL;
+    printf("name: %d\n", N_NAME);
+    printf("visual: %d\n", N_VISUAL);
+    printf("verbal: %d\n", N_VERBAL);
 
-  fclose(fp);
+
+    fprintf(fp, "rbp : 7 4\n\n"); //what it needs to say at the top
+    for (p = 0; p < P; p++) {
+        fprintf(fp, "%s\n", get_name_string(p));
+        fprintf(fp, "H 1 3 name ");
+        for (i = 0; i < N_NAME; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 name ");
+        for (i = 0; i < N_NAME; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 verbal_descriptors ");
+        for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 visual_features ");
+        for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\nend\n\n");
+    }
+    for (p = 0; p < P; p++) {
+        fprintf(fp, "%s\n", get_name_string(p));
+        fprintf(fp, "H 1 3 verbal_descriptors ");
+        for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 name ");
+        for (i = 0; i < N_NAME; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 verbal_descriptors ");
+        for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 visual_features ");
+        for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\nend\n\n");
+
+    }
+    for (p = 0; p < P; p++) {
+        fprintf(fp, "%s\n", get_name_string(p));
+        fprintf(fp, "H 1 3 visual_features ");
+        for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 name ");
+        for (i = 0; i < N_NAME; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 verbal_descriptors ");
+        for (i = N_NAME + N_VISUAL; i < N_NAME + N_VERBAL + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "T 6 2 visual_features ");
+        for (i = N_NAME; i < N_NAME + N_VISUAL; i++) {
+            fprintf(fp, "%d ", get_pattern_int(p, i));
+        }
+        fprintf(fp, "\nend\n\n");
+
+    }
+
+    fclose(fp);
 }

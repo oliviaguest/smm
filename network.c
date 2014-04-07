@@ -189,8 +189,8 @@ void network_open_file(int network_type, char *filename)
 {
     if (network_type == BPTT) {
         if (bptt_open_file(filename) == 0) {
-	  pdptool_load_weights_trained_on_smm_patterns(filename);
-	}
+            pdptool_load_weights_trained_on_smm_patterns(filename);
+        }
         return;
     }
     else if (network_type == BM) {
@@ -1138,10 +1138,10 @@ int network_file_open(int network_type, char* filename) {
 
     if (network_type == BPTT) {
 
-      if (bptt_open_file(filename) == 0) {
-	pdptool_load_weights_trained_on_smm_patterns(filename);
-      }
-      return;
+        if (bptt_open_file(filename) == 0) {
+            pdptool_load_weights_trained_on_smm_patterns(filename);
+        }
+        return;
 
 
     }

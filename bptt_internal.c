@@ -2036,414 +2036,414 @@ void bptt_get_weight_stats(double *array)
 
 int pdptool_load_weights_trained_on_smm_patterns(char *filename)
 {
-  #if PRINT_FUNCTION
-  printf("%s\n", __FUNCTION__);
-  #endif
+#if PRINT_FUNCTION
+    printf("%s\n", __FUNCTION__);
+#endif
 
-  FILE *fp;
-  int i, j;
-  //     char *line = NULL;
-  //     size_t len = 0;
-  
-  fp = fopen(filename, "r");
-  
-  
-  //     i = strlen(filename);
-  //     printf("string length: %i %s\n", i, filename);
-  
-  // If file is not saved as *.mat then this will need to be run to remove the header
-  //     if ((filename[i-1] == 't') && (filename[i-2] == 'w')) {
+    FILE *fp;
+    int i, j;
+    //     char *line = NULL;
+    //     size_t len = 0;
+
+    fp = fopen(filename, "r");
+
+
+    //     i = strlen(filename);
+    //     printf("string length: %i %s\n", i, filename);
+
+    // If file is not saved as *.mat then this will need to be run to remove the header
+    //     if ((filename[i-1] == 't') && (filename[i-2] == 'w')) {
     //       for (i = 0; i < 2150; i++) {
-      // 	getline(&line, &len, fp);
-  // 	printf("%c \n", line[0]);
-  //       }
-  //     }
-  
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-    
-  }
-  
-  if (i != 2) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 1) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  for (i = 0; i < BPTT_N_NAME; i++) {
-    if (!fscanf(fp, "%d", &j)) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
+    // 	getline(&line, &len, fp);
+    // 	printf("%c \n", line[0]);
+    //       }
+    //     }
+
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+
     }
-    if (j != -2) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
+
+    if (i != 2) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
     }
-  }
-  
-  if (!fscanf(fp, "%d", &i))
-  {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 2) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 2) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  /// ********************* ///
-  ///  FROM HIDDEN TO NAME  ///
-  for (i = 0; i < BPTT_N_NAME; i++) {
-    for (j = 0; j < BPTT_K; j++) {
-      if (!fscanf(fp, "%lf", &weight_hv[j][i])) {
-	throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
-	return 0;
-      }
-      //             printf("%f ", weight_hv[j][i]);
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
     }
-    // printf("\n ");
-  }
-  
-  
-  /// ********************* ///
-  /// ********************* ///
-  
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 3) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 1) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-  }
-  
-  for (i = 0; i < BPTT_N_VERBAL; i++) {
-    if (!fscanf(fp, "%d", &j)) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
+    if (i != 1) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
     }
-    if (j != -2) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
-    }
-  }
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 3) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 2) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-  }
-  
-  /// ********************* ///
-  /// FROM HIDDEN TO VERBAL ///
-  for (i = BPTT_N_NAME+BPTT_N_VISUAL; i < N; i++) {
-    for (j = 0; j < BPTT_K; j++) {
-      if (!fscanf(fp, "%lf", &weight_hv[j][i])) {
-	throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
-	return 0;
-      }
-      // 	    printf("%f ", weight_hv[j][i]);
-    }
-    //
-    
-    
-  }
-  
-  
-  //     printf("weight: hidden->verbal = %f\n", weight_hv[0][BPTT_N_NAME+BPTT_N_VISUAL]);
-  
-  /// ********************* ///
-  /// ********************* ///
-  
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 4) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 1) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  for (i = 0; i < BPTT_N_VISUAL; i++) {
-    if (!fscanf(fp, "%d", &j)) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
-    }
-    if (j != -2) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
-    }
-  }
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 4) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 2) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  /// ********************* ///
-  /// FROM HIDDEN TO VISUAL ///
-  for (i = BPTT_N_NAME; i < BPTT_N_NAME+BPTT_N_VISUAL; i++) {
-    for (j = 0; j < BPTT_K; j++) {
-      if (!fscanf(fp, "%lf", &weight_hv[j][i])) {
-	throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
-	return 0;
-      }
-      // 	    printf("%f ", weight_hv[j][i]);
-    }
-    //
-    
-  }
-  
-  
-  //     printf("weight: hidden->visual = %f\n", weight_hv[0][BPTT_N_NAME]);
-  
-  /// ********************* ///
-  /// ********************* ///
-  
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 5) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 1) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  for (i = 0; i < BPTT_K; i++) {
-    if (!fscanf(fp, "%d", &j)) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
-    }
-    if (j != -2) {
-      throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-      return 0;
-    }
-  }
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 5) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 2) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  /// ********************* ///
-  ///  FROM NAME TO HIDDEN  ///
-  for (j = 0; j < BPTT_K; j++) {
+
     for (i = 0; i < BPTT_N_NAME; i++) {
-      if (!fscanf(fp, "%lf", &weight_vh[i][j])) {
-	throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
-	return 0;
-      }
-      // 	    if (i < 3) printf("weight_vh[%i][%i] = %f\n", i, j, weight_vh[i][j]);
-      
-      // 	    printf("%f ", weight_vh[i][j]);
+        if (!fscanf(fp, "%d", &j)) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
+        if (j != -2) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
     }
-    //
-    
-  }
-  
-  
-  //     printf("weight: name->hidden = %f\n", weight_vh[0][0]);
-  
-  /// ********************* ///
-  /// ********************* ///
-  
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 5) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-    
-  }
-  if (i != 3) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  /// ********************* ///
-  /// FROM VERBAL TO HIDDEN ///
-  for (j = 0; j < BPTT_K; j++) {
+
+    if (!fscanf(fp, "%d", &i))
+    {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 2) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 2) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
+    /// ********************* ///
+    ///  FROM HIDDEN TO NAME  ///
+    for (i = 0; i < BPTT_N_NAME; i++) {
+        for (j = 0; j < BPTT_K; j++) {
+            if (!fscanf(fp, "%lf", &weight_hv[j][i])) {
+                throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
+                return 0;
+            }
+            //             printf("%f ", weight_hv[j][i]);
+        }
+        // printf("\n ");
+    }
+
+
+    /// ********************* ///
+    /// ********************* ///
+
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 3) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 1) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+    }
+
+    for (i = 0; i < BPTT_N_VERBAL; i++) {
+        if (!fscanf(fp, "%d", &j)) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
+        if (j != -2) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
+    }
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 3) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 2) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+    }
+
+    /// ********************* ///
+    /// FROM HIDDEN TO VERBAL ///
     for (i = BPTT_N_NAME+BPTT_N_VISUAL; i < N; i++) {
-      if (!fscanf(fp, "%lf", &weight_vh[i][j])) {
-	throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
-	return 0;
-      }
-      // 	    printf("%f ", weight_vh[i][j]);
+        for (j = 0; j < BPTT_K; j++) {
+            if (!fscanf(fp, "%lf", &weight_hv[j][i])) {
+                throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
+                return 0;
+            }
+            // 	    printf("%f ", weight_hv[j][i]);
+        }
+        //
+
+
     }
-    //
-    
-  }
-  
-  //     printf("weight: verbal->hidden = %f\n", weight_vh[BPTT_N_NAME+BPTT_N_VISUAL][0]);
-  
-  /// ********************* ///
-  /// ********************* ///
-  
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 5) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 4) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  /// ********************* ///
-  /// FROM VISUAL TO HIDDEN ///
-  for (j = 0; j < BPTT_K; j++) {
+
+
+    //     printf("weight: hidden->verbal = %f\n", weight_hv[0][BPTT_N_NAME+BPTT_N_VISUAL]);
+
+    /// ********************* ///
+    /// ********************* ///
+
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 4) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 1) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
+    for (i = 0; i < BPTT_N_VISUAL; i++) {
+        if (!fscanf(fp, "%d", &j)) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
+        if (j != -2) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
+    }
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 4) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 2) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
+    /// ********************* ///
+    /// FROM HIDDEN TO VISUAL ///
     for (i = BPTT_N_NAME; i < BPTT_N_NAME+BPTT_N_VISUAL; i++) {
-      //       printf("%i, %i\n", i, j);
-      if (!fscanf(fp, "%lf", &weight_vh[i][j])) {
-	throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
-	return 0;
-      }
-      
-      // 	    printf("%f ", weight_vh[i][j]);
+        for (j = 0; j < BPTT_K; j++) {
+            if (!fscanf(fp, "%lf", &weight_hv[j][i])) {
+                throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
+                return 0;
+            }
+            // 	    printf("%f ", weight_hv[j][i]);
+        }
+        //
+
     }
-    //
-    
-  }
-  //     printf("weight: visual->hidden = %f\n", weight_vh[BPTT_N_NAME][0]);
-  
-  /// ********************* ///
-  /// ********************* ///
-  
-  
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 5) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (!fscanf(fp, "%d", &i)) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  if (i != 5) {
-    throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
-    return 0;
-  }
-  
-  /// ********************* ///
-  /// FROM HIDDEN TO HIDDEN ///
-  for (j = 0; j < BPTT_K; j++) {
+
+
+    //     printf("weight: hidden->visual = %f\n", weight_hv[0][BPTT_N_NAME]);
+
+    /// ********************* ///
+    /// ********************* ///
+
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 5) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 1) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
     for (i = 0; i < BPTT_K; i++) {
-      if (!fscanf(fp, "%lf", &weight_hh[i][j])) {
-	throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
-	return 0;
-      }
+        if (!fscanf(fp, "%d", &j)) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
+        if (j != -2) {
+            throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+            return 0;
+        }
     }
-    
-    
-  }
-  
-  //     printf("weight: hidden->hidden = %f\n", weight_hh[0][0]);
-  
-  /// ********************* ///
-  /// ********************* ///
-  
-  
-  
-  fclose(fp);
-  
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 5) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 2) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
+    /// ********************* ///
+    ///  FROM NAME TO HIDDEN  ///
+    for (j = 0; j < BPTT_K; j++) {
+        for (i = 0; i < BPTT_N_NAME; i++) {
+            if (!fscanf(fp, "%lf", &weight_vh[i][j])) {
+                throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
+                return 0;
+            }
+            // 	    if (i < 3) printf("weight_vh[%i][%i] = %f\n", i, j, weight_vh[i][j]);
+
+            // 	    printf("%f ", weight_vh[i][j]);
+        }
+        //
+
+    }
+
+
+    //     printf("weight: name->hidden = %f\n", weight_vh[0][0]);
+
+    /// ********************* ///
+    /// ********************* ///
+
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 5) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+
+    }
+    if (i != 3) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
+    /// ********************* ///
+    /// FROM VERBAL TO HIDDEN ///
+    for (j = 0; j < BPTT_K; j++) {
+        for (i = BPTT_N_NAME+BPTT_N_VISUAL; i < N; i++) {
+            if (!fscanf(fp, "%lf", &weight_vh[i][j])) {
+                throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
+                return 0;
+            }
+            // 	    printf("%f ", weight_vh[i][j]);
+        }
+        //
+
+    }
+
+    //     printf("weight: verbal->hidden = %f\n", weight_vh[BPTT_N_NAME+BPTT_N_VISUAL][0]);
+
+    /// ********************* ///
+    /// ********************* ///
+
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 5) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 4) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
+    /// ********************* ///
+    /// FROM VISUAL TO HIDDEN ///
+    for (j = 0; j < BPTT_K; j++) {
+        for (i = BPTT_N_NAME; i < BPTT_N_NAME+BPTT_N_VISUAL; i++) {
+            //       printf("%i, %i\n", i, j);
+            if (!fscanf(fp, "%lf", &weight_vh[i][j])) {
+                throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
+                return 0;
+            }
+
+            // 	    printf("%f ", weight_vh[i][j]);
+        }
+        //
+
+    }
+    //     printf("weight: visual->hidden = %f\n", weight_vh[BPTT_N_NAME][0]);
+
+    /// ********************* ///
+    /// ********************* ///
+
+
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 5) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (!fscanf(fp, "%d", &i)) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__,"If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+    if (i != 5) {
+        throw_warning(__FILE__,  __LINE__, __FUNCTION__, "If file is saved as \"binary\", then the file must be opened from within Matlab using pdptool, and then saved as non-binary.", 0);
+        return 0;
+    }
+
+    /// ********************* ///
+    /// FROM HIDDEN TO HIDDEN ///
+    for (j = 0; j < BPTT_K; j++) {
+        for (i = 0; i < BPTT_K; i++) {
+            if (!fscanf(fp, "%lf", &weight_hh[i][j])) {
+                throw_warning(__FILE__,  __LINE__, __FUNCTION__, "Could not read variable: weight_vh[][]", 0);
+                return 0;
+            }
+        }
+
+
+    }
+
+    //     printf("weight: hidden->hidden = %f\n", weight_hh[0][0]);
+
+    /// ********************* ///
+    /// ********************* ///
+
+
+
+    fclose(fp);
+
 //   printf("hidden-hidden %f name hidden %f hidden name %f\n", weight_hh[0][0], weight_vh[0][0], weight_hv[0][0]);
 //   printf("hidden-hidden %f visual hidden %f hidden visual %f\n", weight_hh[0][0], weight_vh[BPTT_N_NAME][0], weight_hv[0][BPTT_N_NAME]);
-  return 1;
+    return 1;
 }
 
 
