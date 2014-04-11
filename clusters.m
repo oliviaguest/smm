@@ -13,7 +13,7 @@ H = zeros(16-1, 20);
     %     clear T;
     %     figure;
 
-    eval(['tyler_reccurent_' num2str(l-1) ';']);
+    eval(['tyler_rec_3_' num2str(l-1) ';']);
 
 %     eval(['bptt_category_patterns_2_all_clamped_1_' num2str(l-1) ';']);
 
@@ -33,7 +33,7 @@ H = zeros(16-1, 20);
 %     set(0,'defaultaxesfontname', 'Times');
 %     set(0,'defaulttextfontname', 'Times');
 %     saveas(f, eval(['''dendrogram_rogers_pattern_wise_' num2str(l-1) '.pdf''']), 'pdf');
-    saveas(f, eval(['''tyler_recurrent_' num2str(l-1) '.pdf''']), 'pdf');
+    saveas(f, eval(['''tyler_recurrent_2_' num2str(l-1) '.pdf''']), 'pdf');
 
 %cophenet(Z,pdist(X))
 % end
