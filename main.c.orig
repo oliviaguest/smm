@@ -6607,40 +6607,82 @@ void clicked_attractor_view_button(GtkWidget *button, gpointer user_data)
       
       double fabs_average_weight = 2*tyler_feedforward_fabs_average_weight(locus);
       tyler_feedforward_unclamp();
-            tyler_feedforward_backup_weights();
-        for (d = 0; d < distribution; d++) { // distribution of lesion
+      tyler_feedforward_backup_weights();
+      for (d = 0; d < distribution; d++) { // distribution of lesion
             for (l = 0; l < level; l++) { // level of leasioning
                 for (p = 0; p < P; p++) { // pattern
                     printf("Run: %i/%i, Level: %i/%i, Pattern: %i/%i\n", d+1, distribution, l+1, level, p+1, P);
-// 		    for (s = 0; s < sample; s++) {        no samples needed it's feedforward
-                    tyler_feedforward_randomise_states();
-
-                    tyler_feedforward_clamp_full_pattern(p);
+		    // 		    for (s = 0; s < sample; s++) {        no samples needed it's feedforward
+		    tyler_feedforward_randomise_states();
+		    
+		    tyler_feedforward_clamp_full_pattern(p);
 		    tyler_feedforward_propagate_noise(familiar_pattern[p], n); //for 3*4 timesteps
-                    tyler_feedforward_unclamp();
-
-
-                    real_time_redraw();
-                    gtkx_flush_events();
-
-                }
-// 		    }
+		    tyler_feedforward_unclamp();
+		    network_save_current_attractor_for_clustering(net_type);
+		    
+		    
+		    real_time_redraw();
+		    gtkx_flush_events();
+		    
+		}
+		// 		    }
 		if (lesion_type == ZEROING) {
 		  tyler_feedforward_lesion_weights_locus(100.0 / (double) level, locus);
-
+		  
 		}
 		else if (lesion_type == NOISE) {
 		  tyler_feedforward_disrupt_weights(fabs_average_weight / (double) level * l);
 		}
-
-                printf("%s_%d.m\n", open_name, l);
-                sprintf(attractor_filename, "%s_%d.m", open_name, l);
-                network_save_attractors_matlab(net_type, attractor_filename);
-                init_attractor_matrix_for_clustering();
-            }
-            tyler_undo_lesion();
-        }
+		
+		printf("%s_%d.m\n", open_name, l);
+		sprintf(attractor_filename, "%s_%d.m", open_name, l);
+		network_save_attractors_matlab(net_type, attractor_filename);
+		init_attractor_matrix_for_clustering();
+      }
+      tyler_feedforward_undo_lesion();
     }
+    }
+    else if (net_type == TYLER_RECURRENT) {
+      int locus = TYLER_LESION_GLOBAL;
+      int n= TEST_N_PATTERN;//ALERT
+      
+      double fabs_average_weight = 2*tyler_fabs_average_weight(locus);
+      tyler_unclamp();
+      tyler_backup_weights();
+      for (d = 0; d < distribution; d++) { // distribution of lesion
+            for (l = 0; l < level; l++) { // level of leasioning
+                for (p = 0; p < P; p++) { // pattern
+                    printf("Run: %i/%i, Level: %i/%i, Pattern: %i/%i\n", d+1, distribution, l+1, level, p+1, P);
+		    // 		    for (s = 0; s < sample; s++) {        no samples needed it's feedforward
+		    tyler_randomise_states();
+		    
+		    tyler_clamp_full_pattern(p);
+		    tyler_propagate_noise(familiar_pattern[p], n); //for 3*4 timesteps
+		    tyler_unclamp();
+		    network_save_current_attractor_for_clustering(net_type);
+		    
+		    
+		    real_time_redraw();
+		    gtkx_flush_events();
+		    
+		}
+		// 		    }
+		if (lesion_type == ZEROING) {
+		  tyler_lesion_weights_locus(100.0 / (double) level, locus);
+		  
+		}
+		else if (lesion_type == NOISE) {
+		  tyler_disrupt_weights(fabs_average_weight / (double) level * l);
+		}
+		
+		printf("%s_%d.m\n", open_name, l);
+		sprintf(attractor_filename, "%s_%d.m", open_name, l);
+		network_save_attractors_matlab(net_type, attractor_filename);
+		init_attractor_matrix_for_clustering();
+      }
+      tyler_undo_lesion();
+    }
+}
     printf("Done!\n");
 
 //     gtk_attractor_view_update(attractor_view);
