@@ -581,65 +581,65 @@ void gtk_naming_graph_update(GtkNaming_Graph *naming_graph)
         superordinate[1] = 0.1385;
         superordinate[0] = 0.0576;
 
-        
+
         crossdomain[3] =    0.00;
         crossdomain[2] =0.0036;
         crossdomain[1] = 0.0018;
         crossdomain[0] = 0.0054;
-        
-        
+
+
         naming_graph->omission[3][0] = 0.0940   ;
         naming_graph->omission[2][0] =  0.3087  ;
         naming_graph->omission[1][0] = 0.4832  ;
         naming_graph->omission[0][0] =  0.6443  ;
-        
+
         naming_graph->omission[3][1] =  0.1007 ;
         naming_graph->omission[2][1]= 0.4228 ;
         naming_graph->omission[1][1] =0.6510   ;
         naming_graph->omission[0][1]=      0.8456;
 
-       
-    
-   
+
+
+
         naming_graph->semantic[3][0] = 0.0838    ;
         naming_graph->semantic[2][0] = 0.2081  ;
         naming_graph->semantic[1][0] = 0.2838 ;
         naming_graph->semantic[0][0] =   0.1405 ;
-        
+
         naming_graph->semantic[3][1] = 0.0865 ;
-   naming_graph->semantic[2][1]=  0.1432;
-   naming_graph->semantic[1][1] = 0.1351    ;
-   naming_graph->semantic[0][1]=     0.0405;
-        
-        
+        naming_graph->semantic[2][1]=  0.1432;
+        naming_graph->semantic[1][1] = 0.1351    ;
+        naming_graph->semantic[0][1]=     0.0405;
 
-  
-      
-   
-     
-     
+
+
+
+
+
+
+
         naming_graph->superordinate[3][0] =     0.0071;
-     naming_graph->superordinate[2][0]=  0.1111;
-     naming_graph->superordinate[1][0] =      0.1210 ;
-     naming_graph->superordinate[0][0] =   0.1721  ;
-     
-     naming_graph-> superordinate[3][1] =    0.0017     ;
-     naming_graph->superordinate[2][1]=  0.0192;
-     naming_graph->superordinate[1][1] =    0.0399  ;
-     naming_graph->superordinate[0][1] =  0.0343  ;
-     
+        naming_graph->superordinate[2][0]=  0.1111;
+        naming_graph->superordinate[1][0] =      0.1210 ;
+        naming_graph->superordinate[0][0] =   0.1721  ;
+
+        naming_graph-> superordinate[3][1] =    0.0017     ;
+        naming_graph->superordinate[2][1]=  0.0192;
+        naming_graph->superordinate[1][1] =    0.0399  ;
+        naming_graph->superordinate[0][1] =  0.0343  ;
 
 
-           naming_graph->crossdomain[3][0] =      0.0027;
- naming_graph->crossdomain[2][0] =0.0082;
- naming_graph->crossdomain[1][0] = 0;
- naming_graph->crossdomain[0][0] = 0.0054;
+
+        naming_graph->crossdomain[3][0] =      0.0027;
+        naming_graph->crossdomain[2][0] =0.0082;
+        naming_graph->crossdomain[1][0] = 0;
+        naming_graph->crossdomain[0][0] = 0.0054;
 
 
-    naming_graph-> crossdomain[3][1] =   0.0027;
-    naming_graph->crossdomain[2][1] = 0.0027;
- naming_graph->crossdomain[1][1] = 0.0;
- naming_graph->crossdomain[0][1] = 0.0082;
+        naming_graph-> crossdomain[3][1] =   0.0027;
+        naming_graph->crossdomain[2][1] = 0.0027;
+        naming_graph->crossdomain[1][1] = 0.0;
+        naming_graph->crossdomain[0][1] = 0.0082;
 
 
         omission[3] =    0.1025;
@@ -655,33 +655,33 @@ void gtk_naming_graph_update(GtkNaming_Graph *naming_graph)
     else if (naming_graph->data_type == ROGERS) {
 
 
-      naming_graph->crossdomain[3][0] =    0.0161;
-      naming_graph->crossdomain[2][0] =0.0222;
-      naming_graph->crossdomain[1][0] = 0.0146;
-      naming_graph->crossdomain[0][0] = 0.0025;
-      
-      naming_graph-> crossdomain[3][1] =    0.00;
-      naming_graph->crossdomain[2][1] =0.00;
-      naming_graph->crossdomain[1][1] = 0.00;
-      naming_graph->crossdomain[0][1] = 0.00;
+        naming_graph->crossdomain[3][0] =    0.0161;
+        naming_graph->crossdomain[2][0] =0.0222;
+        naming_graph->crossdomain[1][0] = 0.0146;
+        naming_graph->crossdomain[0][0] = 0.0025;
 
-         
-      
-      
-     
-     
+        naming_graph-> crossdomain[3][1] =    0.00;
+        naming_graph->crossdomain[2][1] =0.00;
+        naming_graph->crossdomain[1][1] = 0.00;
+        naming_graph->crossdomain[0][1] = 0.00;
 
 
-      naming_graph->superordinate[3][0] = 0.0189 ;
-      naming_graph->superordinate[2][0]= 0.1159 ;
-      naming_graph->superordinate[1][0] = 0.1344  ;
-      naming_graph->superordinate[0][0] = 0.0735   ;
 
-      naming_graph-> superordinate[3][1] =      0.0079     ;
-      naming_graph->superordinate[2][1]=   0.0501;
-      naming_graph->superordinate[1][1] =    0.0522  ;
-      naming_graph->superordinate[0][1] =      0.0187  ;
-     
+
+
+
+
+
+        naming_graph->superordinate[3][0] = 0.0189 ;
+        naming_graph->superordinate[2][0]= 0.1159 ;
+        naming_graph->superordinate[1][0] = 0.1344  ;
+        naming_graph->superordinate[0][0] = 0.0735   ;
+
+        naming_graph-> superordinate[3][1] =      0.0079     ;
+        naming_graph->superordinate[2][1]=   0.0501;
+        naming_graph->superordinate[1][1] =    0.0522  ;
+        naming_graph->superordinate[0][1] =      0.0187  ;
+
 
 
         naming_lesion_level = 4;
@@ -695,11 +695,11 @@ void gtk_naming_graph_update(GtkNaming_Graph *naming_graph)
         naming_graph->semantic[1][1] =     0.1975;
         naming_graph->semantic[0][1]=   0.0725;
 
-       
-        
-       
-           
-          
+
+
+
+
+
         naming_graph-> omission[3][0] =        0.0206;
         naming_graph-> omission[2][0] =   0.1847;
         naming_graph-> omission[1][0] =   0.3396;
@@ -713,51 +713,51 @@ void gtk_naming_graph_update(GtkNaming_Graph *naming_graph)
 
 
 
-        
+
         naming_lesion_level = 4;
         semantic[3] =    0.0500;
         semantic[2] =    0.2031;
         semantic[1] =    0.2241;
         semantic[0] =    0.0804;
-        
-        
-        
-        
+
+
+
+
         superordinate[3] =        0.0196 ;
         superordinate[2] =   0.0866;
         superordinate[1] =     0.0987;
         superordinate[0] =    0.0535;
-        
-        
-        
-        
-        
+
+
+
+
+
         crossdomain[3] =    0.0052;
         crossdomain[2] =    0.0113;
         crossdomain[1] =    0.0163;
         crossdomain[0] =     0.0123;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
         omission[3] =     0.0662;
         omission[2] =        0.3178;
         omission[1] =        0.4697;
         omission[0] =         0.8402;
-        
-        
-        
-        
-        
+
+
+
+
+
         naming_graph->correct[0] =     0.0116;
         naming_graph->correct[1] =
-        0.1898;
+            0.1898;
         naming_graph->correct[2] =    0.3816;
         naming_graph->correct[3] =     0.8639;
     }
@@ -878,7 +878,7 @@ static void draw_naming_subgraph(cairo_t *cr, GtkNaming_Graph *naming_graph, dou
     {
 
 //         y_height = height - (y_offset * 4.0);
-      
+
 // 	  0 = omissions, 1 = semantic, 2 = superordinate, 3 = crossdomain
 
         if (subgraph == 0) { //omissions
@@ -1186,7 +1186,7 @@ static void draw_naming_axes_labels(cairo_t *cr, GtkNaming_Graph *naming_graph, 
         g_snprintf(buffer, 64, "Proportion Correct");
         cairox_text_parameters_set(&p, width/2.0, (height - y_offset) + 37.0, PANGOX_XALIGN_CENTER, PANGOX_YALIGN_CENTER, 0.0);
         cairox_paint_pango_text(cr, &p, layout, buffer);
-        
+
         cairo_stroke(cr);
     }
     else
@@ -1198,17 +1198,17 @@ static void draw_naming_axes_labels(cairo_t *cr, GtkNaming_Graph *naming_graph, 
             g_snprintf(buffer, 64, "%s", y_label[i]);
             cairox_text_parameters_set(&p, x_offset - 40.0, y_offset + (quarter_height - y_offset*2.0)/2.0, PANGOX_XALIGN_CENTER, PANGOX_YALIGN_CENTER, 90.0);
             cairox_paint_pango_text(cr, &p, layout, buffer);
-             cairo_translate(cr, 0, quarter_height);
+            cairo_translate(cr, 0, quarter_height);
         }
         cairo_stroke(cr);
 
         cairo_translate(cr, 0, -height- y_offset/2.0);
         cairo_stroke(cr);
-        
+
         g_snprintf(buffer, 64, "Proportion Correct");
         cairox_text_parameters_set(&p, width/2.0, (height - y_offset) + 37.0, PANGOX_XALIGN_CENTER, PANGOX_YALIGN_CENTER, 0.0);
         cairox_paint_pango_text(cr, &p, layout, buffer);
-        
+
         cairo_stroke(cr);
 
     }
@@ -1245,7 +1245,7 @@ static void draw_naming_graph(cairo_t *cr, GtkWidget *widget, double width, doub
         int i;
         for (i = 0; i < 4; i++) {
 
-          draw_naming_subgraph(cr, naming_graph, width, (height - 5)  / 4.0, layout, p, i);
+            draw_naming_subgraph(cr, naming_graph, width, (height - 5)  / 4.0, layout, p, i);
             cairo_translate(cr, 0, (height - 5)  / 4.0);
         }
 

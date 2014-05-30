@@ -6655,17 +6655,17 @@ void clicked_attractor_view_button(GtkWidget *button, gpointer user_data)
                     printf("Run: %i/%i, Level: %i/%i, Pattern: %i/%i\n", d+1, distribution, l+1, level, p+1, P);
                     // 		    for (s = 0; s < sample; s++) {        no samples needed it's feedforward
 
-		    tyler_randomise_states(tyler_t1);
-		    
-		    tyler_clamp_full_pattern(p, tyler_t1);
-		    tyler_real_time_settle_for(12); //for 3*4 timesteps
-		    tyler_unclamp_time(tyler_t1);
-		    tyler_real_time_unclamped_settle();
+                    tyler_randomise_states(tyler_t1);
+
+                    tyler_clamp_full_pattern(p, tyler_t1);
+                    tyler_real_time_settle_for(12); //for 3*4 timesteps
+                    tyler_unclamp_time(tyler_t1);
+                    tyler_real_time_unclamped_settle();
                     network_save_current_attractor_for_clustering(net_type);
 
-		    
-		    real_time_redraw();
-		    gtkx_flush_events();
+
+                    real_time_redraw();
+                    gtkx_flush_events();
 
                 }
                 // 		    }

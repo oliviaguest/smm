@@ -1608,7 +1608,7 @@ static void draw_aoa_legend(cairo_t *cr, GtkAoA_Graph *aoa_graph, PangoLayout *l
     pangox_layout_set_font_size(layout, 13);
     double text_width = 0.0;
     pangox_layout_select_font_from_string(layout, "CMU Serif");
-    
+
     //draw legend
     cairo_translate(cr, 2*x_offset, 0);
 
