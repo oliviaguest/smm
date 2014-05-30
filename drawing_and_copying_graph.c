@@ -737,6 +737,7 @@ static void draw_drawing_and_copying_subgraph(cairo_t *cr, GtkDrawing_and_copyin
         for (i = 0; i < ((int)y_segments + 1); i++) {
             cairo_move_to(cr, x_offset + 1.0, y_offset + i*y_space + 0.5);
             cairo_line_to(cr, x_offset - 4.0, y_offset + i*y_space + 0.5);
+            
             g_snprintf(buffer, 64, "%1.1f", (double) y_segments- i);// 1.0 - i);// / (double) y_segments);
             cairox_text_parameters_set(&p, x_offset - 6.0, y_offset + i*y_space + 0.5, PANGOX_XALIGN_RIGHT, PANGOX_YALIGN_CENTER, 0.0);
             cairox_paint_pango_text(cr, &p, layout, buffer);
@@ -781,7 +782,8 @@ static void draw_drawing_and_copying_subgraph(cairo_t *cr, GtkDrawing_and_copyin
         for (i = 1; i < ((int)x_segments + 1); i++) { //bar chart - hence diff labels!
             cairo_move_to(cr, x_offset + i*x_space - x_space*0.5, y_axis - 1.0);
             cairo_line_to(cr, x_offset + i*x_space - x_space*0.5, y_axis + 4.0);
-            g_snprintf(buffer, 64, "%1.1f", (i - 1)* 100.0 / (double) drawing_and_copying_lesion_level);
+           
+            g_snprintf(buffer, 64, "%i", (int) ((i - 1)* 100.0 / (double) drawing_and_copying_lesion_level));
             cairox_text_parameters_set(&p, x_offset + i*x_space - x_space*0.5, y_axis + 5.0, PANGOX_XALIGN_CENTER, PANGOX_YALIGN_TOP, 0.0);
             cairox_paint_pango_text(cr, &p, layout, buffer);
         }
