@@ -800,8 +800,8 @@ static void draw_drawing_and_copying_legend(cairo_t *cr, GtkDrawing_and_copying_
 
     pangox_layout_set_font_size(layout, 13);
 
-    pangox_layout_select_font_from_string(layout, "Times");
-
+    pangox_layout_select_font_from_string(layout, "CMU Serif");
+    
     if (drawing_and_copying_graph->legend) {
         double text_width = 0.0;
 

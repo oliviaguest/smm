@@ -511,7 +511,7 @@ static void draw_word_to_picture_legend(cairo_t *cr, GtkWord_to_picture_Graph *w
     pangox_layout_set_font_size(layout, 13);
     //draw legend
 
-    pangox_layout_select_font_from_string(layout, "Times");
+    pangox_layout_select_font_from_string(layout, "CMU Serif");
     if (word_to_picture_graph->legend) {
 
 
